@@ -1,12 +1,12 @@
-#include "Request.h"
+#include "RequestBuilder.h"
 #include <algorithm>
 
 #include <UrlEncode.h>
 
-Request::Request() {
+RequestBuilder::RequestBuilder() {
 }
 
-String Request::getRequestLine() {
+String RequestBuilder::getRequestLine() {
   String ret = this->method + " " + this->path;
   String paramStr = this->query.get();
   if (!paramStr.isEmpty()) {
@@ -16,7 +16,7 @@ String Request::getRequestLine() {
   return ret;
 }
 
-String Request::getRequestHeader() {
+String RequestBuilder::getRequestHeader() {
   this->header.add("Host", this->host);
   if (this->body.size() > 0) {
     this->header.add("Content-Type", "application/x-www-form-urlencoded");
@@ -25,7 +25,7 @@ String Request::getRequestHeader() {
   return this->header.getRaw("\r\n", ": ") + "\r\n";
 }
 
-String Request::getRequest() {
+String RequestBuilder::getRequest() {
   String ret = this->getRequestLine();
   ret += this->getRequestHeader();
   ret += "\r\n";
@@ -33,7 +33,7 @@ String Request::getRequest() {
   return ret;
 }
 
-String Request::getParameterString() {
+String RequestBuilder::getParameterString() {
   Parameter temp;
   temp.concat(this->auth);
   temp.concat(this->query);
@@ -42,6 +42,6 @@ String Request::getParameterString() {
   return temp.get();
 }
 
-String Request::getUrl(String protocol) {
+String RequestBuilder::getUrl(String protocol) {
   return protocol + "://" + this->host + this->path;
 }

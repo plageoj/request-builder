@@ -16,7 +16,7 @@ void setup() {
   }
 
   // Create a new request
-  Request *request = new Request(
+  RequestBuilder *request = new RequestBuilder(
       "GET",
       "www.google.com",
       "/search");

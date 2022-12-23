@@ -19,7 +19,7 @@
     ],
     "platforms": "*",
     "headers": [
-        "Request.h"
+        "RequestBuilder.h"
     ],
     "examples": [],
     "dependencies": {

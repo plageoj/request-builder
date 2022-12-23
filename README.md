@@ -10,7 +10,7 @@ An Arduino library for building HTTP requests.
 WiFiClient client;
 
 void postRequest(){
-    Request *request = new RequestBuilder(
+    RequestBuilder *request = new RequestBuilder(
         "POST",
         "example.com",
         "/path/to/resource"
@@ -76,7 +76,7 @@ Concatenate two parameters, overwriting the original parameter.
 
 Sort the parameter by key alphabetically.
 
-### Request
+### RequestBuilder
 
 A class for building HTTP requests.
 

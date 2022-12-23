@@ -8,15 +8,15 @@
 /**
  * Represents a HTTP request.
  */
-class Request {
+class RequestBuilder {
 public:
-  Request();
+  RequestBuilder();
 
   /**
    * Set the HTTP method of the request.
    * @param method The HTTP method to set (like GET, POST).
    */
-  Request(String method) {
+  RequestBuilder(String method) {
     this->method = method;
   };
   /**
@@ -24,7 +24,7 @@ public:
    * @param method The HTTP method to set (like GET, POST).
    * @param path The host of the request (like www.example.com).
    */
-  Request(String method, String host) {
+  RequestBuilder(String method, String host) {
     this->method = method;
     this->host = host;
   };
@@ -34,7 +34,7 @@ public:
    * @param host The host of the request (like www.example.com).
    * @param path The path of the request (like /path/to/file.html).
    */
-  Request(String method, String host, String path) {
+  RequestBuilder(String method, String host, String path) {
     this->method = method;
     this->host = host;
     this->path = path;

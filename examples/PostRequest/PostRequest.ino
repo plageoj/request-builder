@@ -16,7 +16,7 @@ void setup() {
   }
 
   // Create a new request
-  Request *request = new Request(
+  RequestBuilder *request = new RequestBuilder(
       "POST",
       "httpbin.org",
       "/post");

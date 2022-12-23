@@ -19,10 +19,10 @@
     ],
     "platforms": "*",
     "headers": [
-        "RequestBuilder.h"
+        "Request.h"
     ],
     "examples": [],
     "dependencies": {
-        "plageoj/UrlEncode": "^1.0.0"
+        "plageoj/UrlEncode": "^1.0.1"
     }
 }

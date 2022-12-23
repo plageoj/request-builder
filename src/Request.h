@@ -2,61 +2,8 @@
 #define _PLAGEOJ_REQUEST_BUILDER_H
 
 #include <Arduino.h>
-#include <vector>
 
-/**
- * Represents a query/body parameter list.
- */
-class Parameter {
-public:
-  /**
-   * Add a key-value pair to the parameter list.
-   * @param key The key of the parameter.
-   * @param value The value of the parameter.
-   * @return The number of parameters in the list.
-   */
-  size_t add(String, String);
-  /**
-   * Remove all values of a key from the parameter list.
-   * @param key The key of the parameter to search.
-   * @return The number of parameters in the list.
-   */
-  size_t remove(String);
-  /**
-   * Get all values in the parameter list by concatenating them with the given separator.
-   * @param key_glue The separator to use before each key.
-   * @param value_glue The separator to use before each value.
-   * @return The concatenated string.
-   */
-  String get(String, String);
-  /**
-   * Get all values in the parameter list.
-   * @return The query string.
-   */
-  String get() {
-    return get("&", "=");
-  };
-
-  /**
-   * Merge the parameter list with another parameter list.
-   * @param param The parameter list to merge.
-   */
-  void concat(Parameter);
-  /**
-   * Sort the parameter list by key alphabetically.
-   */
-  void sort();
-
-private:
-  struct KVS {
-    String key;
-    String value;
-  };
-  std::vector<KVS> param;
-  friend bool operator<(KVS &left, KVS &right) {
-    return left.key < right.key;
-  }
-};
+#include "Parameter.h"
 
 /**
  * Represents a HTTP request.
@@ -94,9 +41,22 @@ public:
   };
 
   /**
+   * Get the HTTP request line.
    * @returns The first line of HTTP request.
    */
-  String getRequestString();
+  String getRequestLine();
+  /**
+   * Get the request header block.
+   * Host header is added automatically.
+   * When the request has a body, Content-Length and Content-Type headers are added automatically.
+   * @returns The request header block.
+   */
+  String getRequestHeader();
+  /**
+   * Get the complete request including request line, header block and body.
+   * @returns The complete request.
+   */
+  String getRequest();
   /**
    * Merge and sort all parameters in the
    * query/body/Authorization-header of the request.
@@ -125,15 +85,19 @@ public:
   /**
    * The query parameters of the request.
    */
-  Parameter queryParam;
+  Parameter query;
+  /**
+   * The request headers.
+   */
+  Parameter header;
   /**
    * The body parameters of the POST request.
    */
-  Parameter bodyParam;
+  Parameter body;
   /**
    * The Authorization parameters of the OAuth request.
    */
-  Parameter authParam;
+  Parameter auth;
 
 private:
 };

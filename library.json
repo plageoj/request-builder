@@ -1,6 +1,6 @@
 {
     "name": "RequestBuilder",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Small HTTP request parameters/body builder. Useful for communication with REST APIs.",
     "keywords": "http,communication,REST,API,request,builder",
     "repository": {

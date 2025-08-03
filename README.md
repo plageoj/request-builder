@@ -26,6 +26,7 @@ void postRequest(){
     // Send request
     client.print(request->getRequest());
 
+    // Don't forget to delete the request object to free memory
     delete request;
 
     // Read response and print to serial
@@ -52,17 +53,17 @@ Add a key-value pair to the parameter.
 
 Remove a key-value pair with specified key from the parameter.
 
-#### get(key_grue, value_grue)
+#### get(key_glue, value_glue)
 
-Get all url-encoded key-value pairs containing with given grue string in `key` `value_grue` `value` `key_grue` `key` ... format.
+Get all url-encoded key-value pairs containing with given glue string in `key` `value_glue` `value` `key_glue` `key` ... format.
 
 #### get()
 
 A short-hand of `get("&", "=")`. Get all key-value pairs in `key=value&key=value` format.
 
-#### getRaw(key_grue, value_grue)
+#### getRaw(key_glue, value_glue)
 
-Similar to `get(key_grue, value_grue)`, but does not encode the key-value pairs.
+Similar to `get(key_glue, value_glue)`, but does not encode the key-value pairs.
 
 #### size()
 
